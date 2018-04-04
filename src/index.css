@@ -1,0 +1,15 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'IndieFlower', sans-serif;;
+}
+
+#root {
+  height: inherit;
+}
+
+@font-face {
+  font-family: 'IndieFlower';
+  src: url('IndieFlower.ttf') format('truetype');
+}

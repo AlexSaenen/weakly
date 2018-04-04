@@ -1,0 +1,10 @@
+import React from 'react';
+import Wrapper from './Wrapper';
+
+export default function Tasks() {
+  return (
+    <Wrapper>
+      Tasks
+    </Wrapper>
+  );
+};
