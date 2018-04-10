@@ -2,7 +2,7 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: 'IndieFlower', sans-serif;;
+  font-family: 'Nunito', sans-serif;;
 }
 
 #root {
@@ -10,6 +10,29 @@ html, body {
 }
 
 @font-face {
-  font-family: 'IndieFlower';
-  src: url('IndieFlower.ttf') format('truetype');
+  font-family: 'Nunito';
+  src: url('NunitoFont/Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  src: url('NunitoFont/Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  src: url('NunitoFont/SemiBoldItalic.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  src: url('NunitoFont/Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
 }
