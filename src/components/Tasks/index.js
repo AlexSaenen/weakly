@@ -1,10 +1,11 @@
 import React from 'react';
 import Wrapper from './Wrapper';
+import Task from 'components/Task';
 
-export default function Tasks() {
+export default function Tasks({ tasks }) {
   return (
     <Wrapper>
-      Tasks
+      {tasks.map(task => <Task key={task.id} task={task} />)}
     </Wrapper>
   );
 };
