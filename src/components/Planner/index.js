@@ -1,15 +1,7 @@
 import React from 'react';
-import Weekday from 'components/Weekday';
+import Weekday from 'containers/Weekday';
 import Wrapper from './Wrapper';
 import Grid from './Grid';
-
-// const tasks = [
-// {
-//   name: 'hello',
-//   day: 'monday',
-//   hour: '1PM',
-// }
-// ];
 
 export default function Planner() {
   console.log('Planner.render()');
@@ -17,7 +9,7 @@ export default function Planner() {
 
   return (
     <Wrapper>
-      <Grid> {/* TODO: could be abstracted/renamed to just a horizontal responsive grid */}
+      <Grid> {/* TODO: could be renamed to a horizontal responsive grid */}
         {weekDays.map(day => <Weekday day={day} key={day} />)}
       </Grid>
     </Wrapper>
