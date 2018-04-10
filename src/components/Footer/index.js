@@ -1,6 +1,7 @@
 import React from 'react';
 
 import A from './A';
+import Span from './Span';
 import Wrapper from './Wrapper';
 import Icon from './Icon';
 import heartEmoji from './heart.jpg';
@@ -22,7 +23,7 @@ function Footer() {
   console.log('Footer.render()');
   return (
     <Wrapper>
-      <p>Made with {love} by {me}</p>
+      <Span>Made with {love} by {me}</Span>
     </Wrapper>
   );
 }
