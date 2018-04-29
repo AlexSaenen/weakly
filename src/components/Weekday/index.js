@@ -21,6 +21,7 @@ export default function Weekday(props: Props) {
     range,
     tasks,
   } = props;
+  console.log(`Weekday.render()#${day}`);
   const normalizedDay = day.toLowerCase();
   const dayTasks = tasks.filter(task => task.day === normalizedDay); // TODO: to be replaced by reselect?
   const hours = createHoursFromRange(range);

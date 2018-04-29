@@ -11,6 +11,7 @@ type Props = {
 };
 
 export default function TasksList({ tasks }: Props) {
+  console.log('TasksList.render()');
   return (
     <Wrapper>
       {tasks.map((task: Task) => <TaskItem key={task.id} task={task} />)}
