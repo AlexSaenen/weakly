@@ -3,10 +3,13 @@
 .*/config/.*
 .*/scripts/.*
 .*/tests/.*
+.*/node_modules/.*
+.*/registerServiceWorker.js
+.*/src/index.js
 
 [include]
-src/**/*.js
-src/**/*.json
+.*/src/**/*.js
+.*/src/**/*.json
 
 [libs]
 
