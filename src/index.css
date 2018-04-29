@@ -2,37 +2,9 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: 'Nunito', sans-serif;;
+  font-family: sans-serif;;
 }
 
 #root {
   height: inherit;
-}
-
-@font-face {
-  font-family: 'Nunito';
-  src: url('NunitoFont/Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Nunito';
-  src: url('NunitoFont/Italic.ttf') format('truetype');
-  font-weight: 400;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'Nunito';
-  src: url('NunitoFont/SemiBoldItalic.ttf') format('truetype');
-  font-weight: 600;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'Nunito';
-  src: url('NunitoFont/Black.ttf') format('truetype');
-  font-weight: 900;
-  font-style: normal;
 }

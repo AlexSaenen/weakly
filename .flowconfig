@@ -1,0 +1,20 @@
+[ignore]
+.*/public/.*
+.*/config/.*
+.*/scripts/.*
+.*/tests/.*
+
+[include]
+src/**/*.js
+src/**/*.json
+
+[libs]
+
+[lints]
+
+[options]
+module.name_mapper='^components/\(.*\)$' -> '<PROJECT_ROOT>/src/components/\1'
+module.name_mapper='^containers/\(.*\)$' -> '<PROJECT_ROOT>/src/containers/\1'
+module.name_mapper='^@/\(.*\)$' -> '<PROJECT_ROOT>/src/framework/\1'
+
+[strict]

@@ -1,0 +1,32 @@
+[
+  {
+    "name": "hello world",
+    "day": "wednesday",
+    "hour": 10,
+    "duration": 1.50
+  },
+  {
+    "name": "pancakes",
+    "day": "thursday",
+    "hour": 15,
+    "duration": 0.80
+  },
+  {
+    "name": "gym",
+    "day": "monday",
+    "hour": 19,
+    "duration": 2
+  },
+  {
+    "name": "gym",
+    "day": "wednesday",
+    "hour": 19,
+    "duration": 2
+  },
+  {
+    "name": "gym",
+    "day": "friday",
+    "hour": 19,
+    "duration": 2
+  }
+]

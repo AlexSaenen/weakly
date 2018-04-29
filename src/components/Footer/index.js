@@ -6,9 +6,9 @@ import Wrapper from './Wrapper';
 import Icon from './Icon';
 import heartEmoji from './heart.jpg';
 
-const love = <Icon src={heartEmoji} alt="icon" />;
-const myGithubPseudo = 'AlexSaenen';
-const me = (
+const love: React.Node = <Icon src={heartEmoji} alt="icon" />;
+const myGithubPseudo: string = 'AlexSaenen';
+const me: React.Node = (
   <A
     href={`https://github.com/${myGithubPseudo}`}
     alt="github"
