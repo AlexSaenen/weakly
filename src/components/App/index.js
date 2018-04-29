@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Header from 'components/Header';
 import Planner from 'containers/Planner';
 import Footer from 'components/Footer';
 import Wrapper from './Wrapper';
 
-class App extends Component {
-  render() {
+function App() {
+  // render() {
     console.log('App.render()');
     return (
       <Wrapper>
@@ -14,7 +14,7 @@ class App extends Component {
         <Footer />
       </Wrapper>
     );
-  }
+  // }
 }
 
 export default App;
