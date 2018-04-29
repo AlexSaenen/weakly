@@ -10,7 +10,7 @@ type Props = {
   +tasks: Tasks
 };
 
-export default function TasksList({ tasks }: Props) {
+function TasksList({ tasks }: Props) {
   console.log('TasksList.render()');
   return (
     <Wrapper>
@@ -18,3 +18,5 @@ export default function TasksList({ tasks }: Props) {
     </Wrapper>
   );
 };
+
+export default TasksList;

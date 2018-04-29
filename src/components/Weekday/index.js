@@ -15,7 +15,7 @@ type Props = {
   +range: DayRange,
 };
 
-export default function Weekday(props: Props) {
+function Weekday(props: Props) {
   const {
     day,
     range,
@@ -39,3 +39,5 @@ export default function Weekday(props: Props) {
     </div>
   );
 };
+
+export default Weekday;
