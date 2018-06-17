@@ -12,6 +12,8 @@
     "initDB": "babel-node ./scripts/maintenance/initDatabase.js",
     "resetDB": "yarn emptyDB; yarn initDB",
     "flow": "flow",
+    "flow:checkall": "flow check --all",
+    "flow:install": "flow-typed install",
     "test": "jest --testRegex '(.*(test|spec))\\.js$'",
     "test:coverage": "npm run test -- --coverage",
     "test:watch": "npm run test -- --watch",
