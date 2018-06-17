@@ -106,14 +106,19 @@
     "plugins": [
       "react-hot-loader/babel",
       "styled-components",
-      ["module-resolver", {
-        "root": ["./src"],
-        "alias": {
-          "components": "./src/components",
-          "containers": "./src/containers",
-          "@": "./src/helpers"
+      [
+        "module-resolver",
+        {
+          "root": [
+            "./src"
+          ],
+          "alias": {
+            "components": "./src/components",
+            "containers": "./src/containers",
+            "@": "./src/helpers"
+          }
         }
-      }]
+      ]
     ]
   },
   "eslintConfig": {

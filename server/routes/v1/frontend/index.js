@@ -16,7 +16,7 @@ const router = new Router();
 router
   .use(publicRouter.routes())
   .use(publicRouter.allowedMethods())
-  .use(withJwt);
+  // .use(withJwt);
 
 useRoutersFromDirectory(__dirname, router);
 
