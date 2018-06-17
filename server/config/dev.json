@@ -1,0 +1,18 @@
+{
+  "postgres": {
+    "database": "weakly",
+    "username": "Weakly",
+    "password": "weakly11!",
+    "options": {
+      "host": "dev.l0cal",
+      "port": 5432,
+      "logging": false,
+      "operatorsAliases": false
+    }
+  },
+  "auth": {
+    "front": {
+      "secret": "ueIbTowNk0BBUjcKB6P9ML8xzCsHeYrkwVURxWdsJu1IjcvOBgblmx8a0mazScS"
+    },
+  }
+}

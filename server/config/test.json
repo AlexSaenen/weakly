@@ -1,0 +1,14 @@
+{
+  "postgres": {
+    "database": "weakly-test",
+    "username": "WeaklyTester",
+    "password": "testing11!",
+    "options": {
+      "host": "dev.l0cal",
+      "port": 5432,
+      "logging": false,
+      "operatorsAliases": false
+    }
+  },
+  "auth": {}
+}

@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./helpers/*"],
+      "externalControllers/*": ["./externalControllers/*"],
+      "controllers/*": ["./controllers/*"],
+      "stories/*": ["./stories/*"],
+      "middlewares/*": ["./middlewares/*"],
+      "database": ["./database"],
+      "database/native": ["./database/native"],
+    }
+  },
+  "exclude": [
+    "node_modules",
+  ]
+}

@@ -1,0 +1,18 @@
+[ignore]
+
+[include]
+
+[libs]
+
+[lints]
+
+[options]
+module.name_mapper='^@/\(.*\)$' ->'<PROJECT_ROOT>/helpers/\1'
+module.name_mapper='^externalControllers/\(.*\)$' ->'<PROJECT_ROOT>/externalControllers/\1'
+module.name_mapper='^controllers/\(.*\)$' ->'<PROJECT_ROOT>/controllers/\1'
+module.name_mapper='^stories/\(.*\)$' ->'<PROJECT_ROOT>/stories/\1'
+module.name_mapper='^middlewares/\(.*\)$' ->'<PROJECT_ROOT>/middlewares/\1'
+module.name_mapper='^database$' ->'<PROJECT_ROOT>/database'
+module.name_mapper='^database/native$' ->'<PROJECT_ROOT>/database/native'
+
+[strict]

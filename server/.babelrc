@@ -1,0 +1,27 @@
+{
+  "presets": [
+    "flow",
+    ["env", {
+      "targets": {
+        "node": "current"
+      }
+    }]
+  ],
+  "plugins": [
+    "transform-object-rest-spread",
+    "dynamic-import-node",
+    ["module-resolver", {
+      "root": ["./"],
+        "alias": {
+          "@": "./helpers",
+          "externalControllers": "./externalControllers",
+          "controllers": "./controllers",
+          "stories": "./stories",
+          "middlewares": "./middlewares",
+          "database": "./database",
+          "database/native": "./database/native",
+        }
+      }
+    ]
+  ]
+}
