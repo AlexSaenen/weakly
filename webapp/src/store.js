@@ -1,8 +1,22 @@
 // @flow
 
-import { createStore } from 'redux';
-import plannerReducer from 'containers/Planner/reducer';
+import {
+  createStore,
+  applyMiddleware,
+  compose,
+} from 'redux';
+import { createEpicMiddleware } from 'redux-observable';
+import { rootEpic, rootReducer } from './ducks/root';
 
-const store = createStore(plannerReducer);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const epicMiddleware = createEpicMiddleware();
+const store = createStore(
+  rootReducer,
+  composeEnhancers(
+    applyMiddleware(epicMiddleware),
+  ),
+);
+
+epicMiddleware.run(rootEpic);
 
 export default store;

@@ -1,22 +1,22 @@
 // @flow
 
 import React from 'react';
+import type { Map } from 'immutable';
 
-import TaskItem, { type Task } from 'components/TaskItem';
+import TaskItem from 'components/TaskItem';
+import type { Task } from 'ducks/schemas';
 
 import Wrapper from './Wrapper';
 
-export type Tasks = Array<Task>;
-
 type Props = {
-  +tasks: Tasks
+  +tasks: Map<Task>,
 };
 
 function TasksList({ tasks }: Props) {
   console.log('TasksList.render()');
   return (
     <Wrapper>
-      {tasks.map((task: Task) => <TaskItem key={task.id} task={task} />)}
+      {tasks.map((task) => <TaskItem key={task.get('id')} task={task} />)}
     </Wrapper>
   );
 };

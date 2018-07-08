@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from 'components/Header';
-import Planner from 'containers/Planner';
+import Planner from 'components/Planner';
 import Footer from 'components/Footer';
 import Wrapper from './Wrapper';
 

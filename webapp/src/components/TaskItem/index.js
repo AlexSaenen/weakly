@@ -1,22 +1,12 @@
 // @flow
 
 import React, { Component } from 'react';
+import type { Map } from 'immutable';
+import type { Task } from 'ducks/schemas';
 import Wrapper from './Wrapper';
 
-export type RawTask = {
-  +name: string,
-  +notes: string,
-  +day: string,
-  +hour: number,
-  +duration: number,
-};
-
-export type Task = RawTask & {
-  +id: number,
-};
-
 type Props = {
-  +task: Task
+  +task: Map<Task>,
 };
 
 type State = Props & {
@@ -46,9 +36,9 @@ class TaskItem extends Component<Props, State> {
 
   render() {
     const { task } = this.props;
-    console.log(`TaskItem.render()#${task.id}`);
+    console.log(`TaskItem.render()#${task.get('id')}`);
     const { showMore } = this.state;
-    const startingPosition: number = task.hour - startsAt; // TODO: do checks
+    const startingPosition: number = task.get('hour') - startsAt; // TODO: do checks
 
     return (
       <Wrapper
@@ -56,17 +46,17 @@ class TaskItem extends Component<Props, State> {
           position: 'absolute',
           width: '100%',
           top: `calc((${startingPosition} * 500px) / ${lasts})`,
-          height: `calc((${task.duration} * 500px) / ${lasts})`
+          height: `calc((${task.get('duration')} * 500px) / ${lasts})`
         }}
         onMouseEnter={this.showMore}
         onMouseLeave={this.showLess}
       >
         <div>
-          {task.name}
+          {task.get('name')}
         </div>
         {showMore &&
           <div>
-            {task.notes}
+            {task.get('notes')}
           </div>
         }
       </Wrapper>

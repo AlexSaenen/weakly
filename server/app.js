@@ -30,7 +30,7 @@ const start = async () => {
     .use(router.routes())
     .use(router.allowedMethods());
 
-  const server = app.listen(3000); // TODO: get from config
+  const server = app.listen(3003); // TODO: get from config
 
   gracefulShutdown(server, {
     // onShutdown: () => shutdownDatabase(db),

@@ -47,6 +47,7 @@ module.exports = {
   appIndexJs: resolveApp('src/index.js'),
   appComponents: resolveApp('src/components'),
   appContainers: resolveApp('src/containers'),
+  appDucks: resolveApp('src/ducks'),
   appHelpers: resolveApp('src/helpers'),
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),

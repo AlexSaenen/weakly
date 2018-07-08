@@ -86,6 +86,7 @@ module.exports = {
     alias: {
       components: paths.appComponents,
       containers: paths.appContainers,
+      ducks: paths.appDucks,
       '@': paths.appHelpers,
     },
     plugins: [],

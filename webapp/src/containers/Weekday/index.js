@@ -1,18 +1,22 @@
 // @flow
 
 import React from 'react';
+import { connect } from 'react-redux';
+import type { Map } from 'immutable';
 
 import { createHoursFromRange, type DayRange } from '@/hours';
-import TasksList, { type Tasks } from 'components/TasksList';
+import TasksList from 'components/TasksList';
+import type { Task } from 'ducks/schemas';
 
 import HourLabels from './HourLabels';
 import DayLabel from './DayLabel';
 import DayContentGrid from './DayContentGrid';
+import { getTasks } from './selectors';
 
 type Props = {
   +day: string,
-  +tasks: Tasks,
   +range: DayRange,
+  +tasks: Map<Task>,
 };
 
 function Weekday(props: Props) {
@@ -22,8 +26,6 @@ function Weekday(props: Props) {
     tasks,
   } = props;
   console.log(`Weekday.render()#${day}`);
-  const normalizedDay = day.toLowerCase();
-  const dayTasks = tasks.filter(task => task.day === normalizedDay); // TODO: to be replaced by reselect?
   const hours = createHoursFromRange(range);
 
   return (
@@ -34,10 +36,14 @@ function Weekday(props: Props) {
 
       <DayContentGrid>
         <HourLabels hours={hours} />
-        <TasksList tasks={dayTasks} />
+        <TasksList tasks={tasks} />
       </DayContentGrid>
     </div>
   );
 };
 
-export default Weekday;
+const mapStateToProps = (state, props) => ({
+  tasks: getTasks(state, props),
+});
+
+export default connect(mapStateToProps)(Weekday);

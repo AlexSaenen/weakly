@@ -18,6 +18,7 @@
 [options]
 module.name_mapper='^components/\(.*\)$' -> '<PROJECT_ROOT>/src/components/\1'
 module.name_mapper='^containers/\(.*\)$' -> '<PROJECT_ROOT>/src/containers/\1'
+module.name_mapper='^ducks/\(.*\)$' -> '<PROJECT_ROOT>/src/ducks/\1'
 module.name_mapper='^@/\(.*\)$' -> '<PROJECT_ROOT>/src/helpers/\1'
 
 [strict]

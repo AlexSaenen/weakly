@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "name": "hello world",
     "notes": "introduction",
     "day": "wednesday",
@@ -7,6 +8,7 @@
     "duration": 1.50
   },
   {
+    "id": 2,
     "name": "pancakes",
     "notes": "only 2 and you know it",
     "day": "thursday",
@@ -14,6 +16,7 @@
     "duration": 0.80
   },
   {
+    "id": 3,
     "name": "gym",
     "notes": "do not forget your bug, moron",
     "day": "monday",
@@ -21,6 +24,7 @@
     "duration": 2
   },
   {
+    "id": 4,
     "name": "gym",
     "notes": "",
     "day": "wednesday",
@@ -28,6 +32,7 @@
     "duration": 2
   },
   {
+    "id": 5,
     "name": "gym",
     "notes": "clean up fast before weekend",
     "day": "friday",
