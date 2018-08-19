@@ -2,13 +2,13 @@ version: 2
 
 jobs:
   build:
-    docker:
-      - image: circleci/node
+    machine: true
     steps:
       - checkout
       - run:
           name: Rebuild docker image and push to registry
           command: |
+            curl -o- -L https://yarnpkg.com/install.sh | bash
             docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
             cd webapp
             make pull
@@ -19,8 +19,7 @@ jobs:
             make build
             make push
   production:
-    docker:
-      - image: circleci/node
+    machine: true
     steps:
       - add_ssh_keys:
           fingerprints:
