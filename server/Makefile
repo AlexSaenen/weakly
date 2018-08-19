@@ -74,3 +74,6 @@ build:
 
 push:
 	docker push $(REPOSITORY)/weakly-api:latest
+
+pull:
+	docker pull $(REPOSITORY)/weakly-api:latest || true

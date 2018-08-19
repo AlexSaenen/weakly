@@ -24,3 +24,6 @@ build:
 
 push:
 	docker push $(REPOSITORY)/weakly-webapp:latest
+
+pull:
+	docker pull $(REPOSITORY)/weakly-webapp:latest || true
