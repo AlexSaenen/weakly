@@ -2,7 +2,7 @@ version: 2
 
 jobs:
   build:
-    machine:
+    docker:
       image: circleci/node
     steps:
       - checkout
@@ -19,7 +19,7 @@ jobs:
             make build
             make push
   production:
-    machine:
+    docker:
       image: circleci/node
     steps:
       - add_ssh_keys:
