@@ -5,7 +5,7 @@ import { DragSource } from 'react-dnd';
 import type { Map } from 'immutable';
 import type { Task } from 'ducks/schemas';
 import { DragItemTypes } from '@/constants';
-import Wrapper from './Wrapper';
+// import Wrapper from './Wrapper';
 
 type Props = {
   +task: Map<Task>,

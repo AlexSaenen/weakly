@@ -3,7 +3,7 @@
 import { connect } from 'react-redux';
 
 import TasksList from 'components/TasksList';
-import type { Task } from 'ducks/schemas';
+// import type { Task } from 'ducks/schemas';
 
 import {
   getTasks,

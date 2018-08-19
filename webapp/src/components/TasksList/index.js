@@ -3,28 +3,28 @@
 import React, { Component, type Element } from 'react';
 import { findDOMNode } from 'react-dom';
 import { DropTarget } from 'react-dnd';
-import { Subject } from 'rxjs';
-import {
-  distinctUntilKeyChanged,
-  distinctUntilChanged,
-  map,
-} from 'rxjs/operators';
+// import { Subject } from 'rxjs';
+// import {
+//   distinctUntilKeyChanged,
+//   distinctUntilChanged,
+//   map,
+// } from 'rxjs/operators';
 import type { Map } from 'immutable';
 
 import { DragItemTypes } from '@/constants';
 import TaskItem from 'components/TaskItem';
 import type { Task } from 'ducks/schemas';
 
-import Wrapper from './Wrapper';
+// import Wrapper from './Wrapper';
 
 // FIXME: where should we put this ? or at least get it from ?
-const dayDuration = 1020;
-const nockSize = 5;
-const totalHeight = 500;
+// const dayDuration = 1020;
+// const nockSize = 5;
+// const totalHeight = 500;
 
-const toPixel = (amount, range) => `calc((${amount} * 500px) / ${range})`;
-const toMinutes = (amount, range) => ((amount / range) * dayDuration);
-const atLeastZero = (number: number): number => (number >= 0 ? number : 0);
+// const toPixel = (amount, range) => `calc((${amount} * 500px) / ${range})`;
+// const toMinutes = (amount, range) => ((amount / range) * dayDuration);
+// const atLeastZero = (number: number): number => (number >= 0 ? number : 0);
 
 const taskListTarget = {
   drop(props) {},
@@ -36,8 +36,8 @@ const taskListTarget = {
       of calls and memoize what is redundant information. Or even better, try to do this once
       when the drag starts and then just update the position with the offset difference */
 
-    const domRect = node.getBoundingClientRect();
-    const yInternalOffset = atLeastZero(monitor.getClientOffset().y - domRect.y);
+    // const domRect = node.getBoundingClientRect();
+    // const yInternalOffset = atLeastZero(monitor.getClientOffset().y - domRect.y);
     /* TODO: emit an action, create a drag reducer and append a representation of
       the placeholder in the store, whenever hover updates the position, use our
       createDragEventEmitter below to throttle and control the changes in the placeholder's
