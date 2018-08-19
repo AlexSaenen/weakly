@@ -9,6 +9,11 @@ jobs:
           name: Rebuild docker image and push to registry
           command: |
             docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+            cd webapp
+            make pull
+            make build
+            make push
+            cd ../server
             make pull
             make build
             make push
