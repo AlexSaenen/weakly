@@ -9,6 +9,7 @@ jobs:
           name: Rebuild docker image and push to registry
           command: |
             curl -o- -L https://yarnpkg.com/install.sh | bash
+            source .
             docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
             cd webapp
             make pull
