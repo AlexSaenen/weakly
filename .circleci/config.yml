@@ -2,7 +2,8 @@ version: 2
 
 jobs:
   build:
-    machine: true
+    machine:
+      image: circleci/node
     steps:
       - checkout
       - run:
@@ -18,7 +19,8 @@ jobs:
             make build
             make push
   production:
-    machine: true
+    machine:
+      image: circleci/node
     steps:
       - add_ssh_keys:
           fingerprints:
