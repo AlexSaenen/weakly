@@ -5,7 +5,7 @@ WORKDIR /usr/src/app
 
 COPY package.json ./
 
-RUN yarn --production=yes
+RUN yarn
 
 COPY . .
 
