@@ -2,7 +2,12 @@
 
 import { normalize, schema } from 'normalizr';
 
-const taskSchema = new schema.Entity('tasks');
+const taskSchema = new schema.Entity('tasks', {}, {
+  processStrategy: (entity) => ({
+    ...entity,
+    day: entity.day.toLowerCase(),
+  }),
+});
 const tasksSchema = [taskSchema];
 
 export type Task = {
@@ -10,7 +15,7 @@ export type Task = {
   +name: string,
   +notes: string,
   +day: string,
-  +hour: number,
+  +time: number,
   +duration: number,
 };
 

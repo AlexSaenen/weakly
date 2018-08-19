@@ -1,17 +1,15 @@
 // @flow
 
 // import { combineEpics } from 'redux-observable';
-// import { combineReducers } from 'redux';
+import { combineReducers } from 'redux';
 
-import tasks, { getTasks } from './tasks';
+import planner, { getTasks } from './planner';
 
 // export const rootEpic = combineEpics(
 //   pingEpic,
 //   fetchUserEpic
 // );
 export const rootEpic = getTasks;
-// export const rootReducer = combineReducers({
-//   ping,
-//   users
-// });
-export const rootReducer = tasks;
+export const rootReducer = combineReducers({
+  planner,
+});

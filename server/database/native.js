@@ -21,22 +21,26 @@ const postgresOptions = {
   port: options.port,
 };
 
-const createDatabaseClient = (_database: string) =>
+type NativeClient = any;
+
+const createDatabaseClient = (_database: string): NativeClient =>
   new Client({
     ...postgresOptions,
     database: _database,
   });
 
-const connectToDatabase = (_database: string) => {
+type GiveClient = (void) => NativeClient;
+
+const connectToDatabase = (_database: string): Promise<GiveClient> => {
   const client = createDatabaseClient(_database);
-  const giveClient = () => client;
+  const giveClient: GiveClient = () => client;
   return client
     .connect()
     .then(giveClient);
 };
 
 const start = () => connectToDatabase(databaseName);
-const closeClient = (client: any) => client.end();
+const closeClient = (client: NativeClient): Promise<void> => client.end();
 
 export {
   connectToDatabase,

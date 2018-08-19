@@ -2,13 +2,13 @@
 
 import { createSelector } from 'reselect';
 
-const getResult = state => state.get('result');
-const getTasksFromState = state => state.getIn(['entities', 'tasks']);
+const getResult = state => state.planner.get('result');
+const getTasksFromPlanner = state => state.planner.getIn(['entities', 'tasks']);
 const getNormalizedDay = (_, props) => props.day.toLowerCase();
 
 export const getTasks = createSelector(
   getResult,
-  getTasksFromState,
+  getTasksFromPlanner,
   getNormalizedDay,
   (result, tasks, normalizedDay) => {
     return (result

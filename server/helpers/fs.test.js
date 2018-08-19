@@ -124,7 +124,20 @@ describe('isNotIndex', () => {
 });
 
 describe('isNotTest', () => {
-  const { isNotTest } = fsHelpers;
+  const { isNotTest, getPath } = fsHelpers;
+
+  const pathToTestFolder = getPath(__dirname)('folder.test');
+
+  beforeAll(() => {
+    try {
+      fs.rmdirSync(pathToTestFolder);
+    } catch (fsError) { /* folder does not already exist */ }
+    fs.mkdirSync(pathToTestFolder);
+  });
+
+  afterAll(() => {
+    fs.rmdirSync(pathToTestFolder);
+  });
 
   test('it returns true if given "fs.js"', () => {
     const file = 'fs.js';
@@ -140,6 +153,44 @@ describe('isNotTest', () => {
     const file = 'index.test.js';
     expect(isNotTest(file)).toBeFalsy();
   });
+
+  test('it returns false if given a folder "folder.test"', () => {
+    expect(isNotTest(pathToTestFolder)).toBeFalsy();
+  });
+});
+
+describe('isNotATestFile', () => {
+  const {
+    isNotATestFile,
+    getPath,
+  } = fsHelpers;
+
+  const pathToTestFolder = getPath(__dirname)('folder.test');
+
+  beforeAll(() => {
+    try {
+      fs.rmdirSync(pathToTestFolder);
+    } catch (fsError) { /* folder does not already exist */ }
+    fs.mkdirSync(pathToTestFolder);
+  });
+
+  afterAll(() => {
+    fs.rmdirSync(pathToTestFolder);
+  });
+
+  test('isNotATestFile returns true if given path to "fs.js"', () => {
+    const file = getPath(__dirname)('fs.js');
+    expect(isNotATestFile(file)).toBeTruthy();
+  });
+
+  test('isNotATestFile returns false if given path to "fs.test.js"', () => {
+    const file = getPath(__dirname)('fs.test.js');
+    expect(isNotATestFile(file)).toBeFalsy();
+  });
+
+  test('isNotATestFile returns false for path to "folder.test"', () => {
+    expect(isNotATestFile(pathToTestFolder)).toBeFalsy();
+  });
 });
 
 describe('isAFile and isAJavascriptFile', () => {
@@ -154,7 +205,7 @@ describe('isAFile and isAJavascriptFile', () => {
   beforeAll(() => {
     try {
       fs.rmdirSync(pathToTestFolder);
-    } catch (fsError) { console.log('Creating new testFolder'); }
+    } catch (fsError) { /* folder does not already exist */ }
     fs.mkdirSync(pathToTestFolder);
   });
 

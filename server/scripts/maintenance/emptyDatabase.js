@@ -4,7 +4,7 @@ import {
   start as connectToTargetDatabase,
   closeClient,
   databaseName,
-} from 'database/native';
+} from 'db/native';
 
 const refuseFurtherConnections = 'REVOKE ALL PRIVILEGES ON SCHEMA pg_catalog FROM "public";';
 const killOtherConnections = `

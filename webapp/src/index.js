@@ -6,7 +6,7 @@ import { AppContainer } from 'react-hot-loader';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 import store from './store';
-import { loadTasks } from './ducks/tasks';
+import { loadTasks } from './ducks/planner';
 import './index.css';
 
 const renderApp = AppComponent =>

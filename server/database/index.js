@@ -4,7 +4,7 @@ import config from 'config';
 import fs from 'fs';
 import chalk from 'chalk';
 
-import { getPath, isAFile } from '@/fs';
+import { getPath, isNotATestFile } from '@/fs';
 
 const [
   database,
@@ -25,9 +25,12 @@ const sequelizeOptions = [
   { dialect: 'postgres', ...options },
 ];
 
-const createDatabaseClient = () => new Sequelize(...sequelizeOptions);
+type Client = any;
+type Models = Object;
 
-const initializeModels = (client) => {
+const createDatabaseClient = (): Client => new Sequelize(...sequelizeOptions);
+
+const initializeModels = (client: Client): Models => {
   const initialModels = {};
   const pathToModelsFolder = getPath(__dirname)('models');
   const getFilePath = file => getPath(pathToModelsFolder)(file);
@@ -39,7 +42,7 @@ const initializeModels = (client) => {
   const models = fs
     .readdirSync(pathToModelsFolder)
     .map(getFilePath)
-    .filter(isAFile)
+    .filter(isNotATestFile)
     .reduce(importModels, initialModels);
 
   const modelNeedsAssociation = ([, model]) => 'associate' in model;
@@ -53,20 +56,20 @@ const initializeModels = (client) => {
   return models;
 };
 
-const connectClient = client => client
+const connectClient = (client: Client): Promise<void> => client
   .authenticate()
   .catch((error) => {
     const fullErrorMessage = chalk`{red Failed to connect to the database}: ${error}`;
     throw new Error(fullErrorMessage);
   });
 
-const startClient = client =>
+const startClient = (client: Client): Promise<Models> =>
   connectClient(client)
     .then(() => initializeModels(client));
 
-const closeClient = client => client.close();
+const closeClient = (client: Client): Promise<void> => client.close();
 
-const defaultClient = createDatabaseClient();
+const defaultClient: Client = createDatabaseClient();
 export default defaultClient;
 
 const { Op } = Sequelize;

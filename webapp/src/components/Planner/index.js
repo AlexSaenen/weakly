@@ -4,7 +4,7 @@ import React from 'react';
 
 import type { DayRange } from '@/hours';
 
-import Weekday from 'containers/Weekday';
+import Weekday from 'components/Weekday';
 import Wrapper from './Wrapper';
 import HorizontalGrid from './HorizontalGrid';
 

@@ -13,6 +13,7 @@ import {
 
 export type State = Iterable;
 
+// TODO: more action types
 export type Action = {
   +type: string,
   +tasks: Tasks,
@@ -43,7 +44,7 @@ const tasksReducer = (state: State = initialState, action: Action): State => {
 
 export const loadTasks = () => ({ type: FETCH });
 export const loadTasksFail = (error: string) => ({ type: FETCH_FAIL, error });
-export const loadTasksOk = (tasks: Tasks) => ({ type: FETCH_OK, tasks });
+export const loadTasksOk = (tasks: Tasks): Action => ({ type: FETCH_OK, tasks });
 
 export const getTasks = (action$) =>
   action$.pipe(

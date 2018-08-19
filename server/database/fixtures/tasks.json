@@ -1,0 +1,37 @@
+[
+  {
+    "name": "hello world",
+    "notes": "introduction",
+    "day": "Wednesday",
+    "time": 600,
+    "duration": 90
+  },
+  {
+    "name": "pancakes",
+    "notes": "only 2 and you know it",
+    "day": "Thursday",
+    "time": 900,
+    "duration": 50
+  },
+  {
+    "name": "gym",
+    "notes": "do not forget your bug, moron",
+    "day": "Monday",
+    "time": 1140,
+    "duration": 120
+  },
+  {
+    "name": "gym",
+    "notes": "",
+    "day": "Wednesday",
+    "time": 1140,
+    "duration": 120
+  },
+  {
+    "name": "gym",
+    "notes": "clean up fast before weekend",
+    "day": "Friday",
+    "time": 1140,
+    "duration": 120
+  }
+]

@@ -3,7 +3,6 @@
 .*/config/.*
 .*/scripts/.*
 .*/tests/.*
-.*/node_modules/.*
 .*/registerServiceWorker.js
 .*/src/index.js
 

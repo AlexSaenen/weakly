@@ -7,10 +7,12 @@
   "license": "MIT",
   "scripts": {
     "start:dev": "NODE_ENV=dev nodemon ./index.js",
-    "start:prod": "NODE_ENV=production node ./index.js",
+    "start:prod": "NODE_ENV=production PORT=80 node ./index.js",
     "emptyDB": "babel-node ./scripts/maintenance/emptyDatabase.js",
-    "initDB": "babel-node ./scripts/maintenance/initDatabase.js",
-    "resetDB": "yarn emptyDB; yarn initDB",
+    "applyMigrations": "babel-node ./scripts/maintenance/applyMigrations.js",
+    "initProdDB": "NODE_ENV=production babel-node ./scripts/maintenance/initProductionDatabase.js",
+    "initDevDB": "NODE_ENV=dev babel-node ./scripts/maintenance/initDevelopmentDatabase.js",
+    "resetDevDB": "NODE_ENV=dev yarn emptyDB; yarn initDevDB",
     "flow": "flow",
     "flow:checkall": "flow check --all",
     "flow:install": "flow-typed install",
@@ -39,11 +41,12 @@
     "koa": "^2.5.1",
     "koa-body": "^4.0.1",
     "koa-jwt": "^3.3.2",
+    "koa-qs": "^2.0.0",
     "koa-router": "^7.4.0",
     "moment": "^2.21.0",
     "pg": "^7.4.3",
-    "raven": "^2.6.2",
-    "sequelize": "4.35.2"
+    "sequelize": "^5.0.0-beta.9",
+    "umzug": "^2.1.0"
   },
   "devDependencies": {
     "babel-cli": "6.26.0",

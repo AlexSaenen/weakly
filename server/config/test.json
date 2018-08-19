@@ -5,9 +5,8 @@
     "password": "testing11!",
     "options": {
       "host": "dev.l0cal",
-      "port": 5432,
-      "logging": false,
-      "operatorsAliases": false
+      "port": 5463,
+      "logging": false
     }
   },
   "auth": {}

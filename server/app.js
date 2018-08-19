@@ -1,28 +1,31 @@
 /* @flow */
 import Koa from 'koa';
+import chalk from 'chalk';
 import cors from '@koa/cors';
 import bodyParser from 'koa-body';
+import withQuerystring from 'koa-qs';
 import gracefulShutdown from 'http-graceful-shutdown';
 
-import catchErrors from 'middlewares/error';
+import handleMiddlewareErrors from 'middlewares/error';
 
-// import db, {
-//   closeClient as shutdownDatabase,
-//   startClient as startDatabase,
-// } from './database';
+import db, {
+  startClient as startDatabase,
+  closeClient as shutdownDatabase,
+} from 'db';
 import router from './routes';
 
-const start = async () => {
-  // await startDatabase(db)
-  //   .catch((databaseError) => {
-  //     console.error(databaseError);
-  //     process.exit(1);
-  //   });
+export const startServer = async () => {
+  startDatabase(db)
+    .catch((databaseError) => {
+      console.log(chalk.red(databaseError));
+      process.exit(1);
+    });
 
   const app = new Koa();
 
-  app.use(catchErrors);
-  app.on('error', error => console.error(error));
+  withQuerystring(app);
+  app.use(handleMiddlewareErrors);
+  app.on('error', error => console.log(chalk.red(error)));
 
   app
     .use(cors())
@@ -30,12 +33,15 @@ const start = async () => {
     .use(router.routes())
     .use(router.allowedMethods());
 
-  const server = app.listen(3003); // TODO: get from config
+  const port = process.env.PORT || 3003;
+  const server = app.listen(port); // TODO: get from config
 
   gracefulShutdown(server, {
-    // onShutdown: () => shutdownDatabase(db),
+    onShutdown: () => shutdownDatabase(db),
   });
+
+  return server;
 };
 
-export default start();
-export { start };
+const server = startServer();
+export default server;

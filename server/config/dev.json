@@ -5,9 +5,8 @@
     "password": "weakly11!",
     "options": {
       "host": "dev.l0cal",
-      "port": 5432,
-      "logging": false,
-      "operatorsAliases": false
+      "port": 8082,
+      "logging": false
     }
   },
   "auth": {

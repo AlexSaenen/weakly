@@ -3,15 +3,16 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./helpers/*"],
-      "externalControllers/*": ["./externalControllers/*"],
+      "externalServices/*": ["./externalServices/*"],
       "controllers/*": ["./controllers/*"],
       "stories/*": ["./stories/*"],
       "middlewares/*": ["./middlewares/*"],
-      "database": ["./database"],
-      "database/native": ["./database/native"],
+      "db": ["./database"],
+      "db/native": ["./database/native"],
+      "fixtures": ["./database/fixtures"]
     }
   },
   "exclude": [
-    "node_modules",
+    "node_modules"
   ]
 }

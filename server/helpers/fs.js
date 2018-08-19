@@ -13,6 +13,10 @@ export const hasExtension = (extensions: Array<string>) =>
 export const hasJavascriptExtension = hasExtension(javascriptExtensions);
 
 export const isAFile = (file: string) => fs.lstatSync(file).isFile();
+export const isADirectory = (file: string) => fs.lstatSync(file).isDirectory();
 export const isNotIndex = (file: string) => withoutExtension(file) !== 'index';
-export const isNotTest = (file: string) => withoutExtension(file).endsWith('.test') === false;
+export const isNotTest = (file: string) =>
+  withoutExtension(file).endsWith('.test') === false
+  && getFileExtension(file).endsWith('.test') === false;
+export const isNotATestFile = (file: string) => isAFile(file) && isNotTest(file);
 export const isAJavascriptFile = (file: string) => isAFile(file) && hasJavascriptExtension(file);

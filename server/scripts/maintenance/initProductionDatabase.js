@@ -3,13 +3,10 @@
 import db, {
   startClient,
   closeClient,
-} from 'database';
-
-// import initDevDatabase from './temporaryDevDatabase';
+} from 'db';
 
 startClient(db)
   .then(() => db.sync({ force: true }))
-  // .then(initDevDatabase)
   .catch((databaseError) => {
     console.error(databaseError);
     throw new Error('initDatabase failed to execute');

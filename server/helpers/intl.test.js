@@ -31,4 +31,9 @@ describe('normalizeString', () => {
   test('final example: "BTS - Wörld Toùr Bjørk" becomes "bts_-_world_tour"', () => {
     expect(normalizeString('BTS - Wörld Toùr Bjørk')).toBe('bts_-_world_tour_bjork');
   });
+  /* eslint-disable quotes */
+  it(`remove everything that is not a letter or number: "Foo's and "5 friends"" becomes "foos_and_5_friends"`, () => {
+    expect(normalizeString(`Foo's and "5 friends"`)).toBe(`foos_and_5_friends`);
+  });
+  /* eslint-enable quotes */
 });
