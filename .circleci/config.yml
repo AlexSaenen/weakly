@@ -1,7 +1,7 @@
 version: 2
 
 jobs:
-  push:
+  build:
     machine: true
     steps:
       - checkout
@@ -24,13 +24,13 @@ workflows:
   version: 2
   deploy:
     jobs:
-      - push:
+      - build:
           filters:
             branches:
               only: master
       - production:
           requires:
-            - push
+            - build
           filters:
             branches:
               only: master
