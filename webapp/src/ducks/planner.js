@@ -11,7 +11,7 @@ import {
   type Tasks,
 } from './schemas';
 
-export type State = Iterable;
+export type State = Iterable<string, mixed>;
 
 // TODO: more action types
 export type Action = {

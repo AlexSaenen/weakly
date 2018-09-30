@@ -9,4 +9,4 @@ COPY build ./build
 
 EXPOSE 80
 
-CMD serve -s build
+CMD serve -s build -p 80
