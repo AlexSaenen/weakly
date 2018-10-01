@@ -15,10 +15,12 @@
     "flow": "flow",
     "flow:checkall": "flow check --all",
     "flow:install": "flow-typed install",
-    "test": "jest --testRegex '(.*(test|spec))\\.js$'",
-    "test:coverage": "npm run test -- --coverage",
-    "test:watch": "npm run test -- --watch",
-    "test:e2e": "jest --runInBand --testRegex '(/__e2e__/.*(test|spec))\\.js$'"
+    "test": "jest --testRegex '(.*spec)\\.js$'",
+    "test:db": "jest --runInBand --testRegex '(.*test)\\.js$'",
+    "test:e2e": "jest --runInBand --testRegex '(/__e2e__/.*test)\\.js$'",
+    "test:all": "yarn test; yarn test:db; echo '\nadd yarn test:e2e when available\n'",
+    "test:watch": "yarn test --watch",
+    "test:coverage": "yarn test --coverage"
   },
   "dependencies": {
     "@koa/cors": "2",
@@ -38,6 +40,8 @@
     "flow": "^0.2.3",
     "flow-typed": "^2.4.0",
     "http-graceful-shutdown": "^2.1.1",
+    "inquirer": "^6.2.0",
+    "inquirer-datepicker-prompt": "^0.4.2",
     "jest": "^22.4.3",
     "jsonwebtoken": "^8.2.2",
     "koa": "^2.5.1",

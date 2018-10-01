@@ -20,7 +20,8 @@
           "middlewares": "./middlewares",
           "db": "./database",
           "db/native": "./database/native",
-          "fixtures": "./database/fixtures"
+          "fixtures": "./database/fixtures",
+          "models": "./database/models"
         }
       }
     ]

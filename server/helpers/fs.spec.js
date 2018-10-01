@@ -31,6 +31,35 @@ describe('getPath', () => {
   });
 });
 
+describe('getFileName', () => {
+  const { getFileName } = fsHelpers;
+
+  test('given "test" returns "test"', () => {
+    const fileName = getFileName('test');
+    expect(fileName).toBe('test');
+  });
+
+  test('given "/test" returns "test"', () => {
+    const fileName = getFileName('/test');
+    expect(fileName).toBe('test');
+  });
+
+  test('given "a/relative/path/test" returns "test"', () => {
+    const fileName = getFileName('a/relative/path/test');
+    expect(fileName).toBe('test');
+  });
+
+  test('given "/an/absolute/path/test" returns "test"', () => {
+    const fileName = getFileName('/an/absolute/path/test');
+    expect(fileName).toBe('test');
+  });
+
+  test('given "/a/path/test.ext" returns "test.ext"', () => {
+    const fileName = getFileName('/a/path/test.ext');
+    expect(fileName).toBe('test.ext');
+  });
+});
+
 describe('getFileExtension', () => {
   const { getFileExtension } = fsHelpers;
 
@@ -69,10 +98,15 @@ describe('withoutExtension', () => {
   });
 });
 
-describe('hasExtension and hasJavascriptExtension', () => {
+describe('hasExtension, hasJavascriptExtension, hasTypesExtension and hasTestExtension', () => {
   const {
     hasExtension,
+    javascriptExtensions,
+    testExtensions,
+    typesExtensions,
     hasJavascriptExtension,
+    hasTestExtension,
+    hasTypesExtension,
   } = fsHelpers;
 
   test('hasExtension returns true when sent [".cpp"] and "index.cpp"', () => {
@@ -93,14 +127,46 @@ describe('hasExtension and hasJavascriptExtension', () => {
     expect(hasExtension(extensions)(file)).toBeFalsy();
   });
 
-  test('hasJavascriptExtension returns true if given "index.js"', () => {
-    const file = 'index.js';
-    expect(hasJavascriptExtension(file)).toBeTruthy();
+  test('hasJavascriptExtension returns true if given any javascriptExtensions', () => {
+    const fileName = 'index';
+    const filesWithExtension = javascriptExtensions.map(ext => `${fileName}${ext}`);
+
+    filesWithExtension.forEach((file) => {
+      expect(hasJavascriptExtension(file)).toBeTruthy();
+    });
   });
 
   test('hasJavascriptExtension returns false if given "index.cpp"', () => {
     const file = 'index.cpp';
     expect(hasJavascriptExtension(file)).toBeFalsy();
+  });
+
+  test('hasTestExtension returns true if given any testExtensions', () => {
+    const fileName = 'index';
+    const filesWithExtension = testExtensions.map(ext => `${fileName}${ext}`);
+
+    filesWithExtension.forEach((file) => {
+      expect(hasTestExtension(file)).toBeTruthy();
+    });
+  });
+
+  test('hasTestExtension returns false if given "index.cpp"', () => {
+    const file = 'index.cpp';
+    expect(hasTestExtension(file)).toBeFalsy();
+  });
+
+  test('hasTypesExtension returns true if given any typesExtensions', () => {
+    const fileName = 'index';
+    const filesWithExtension = typesExtensions.map(ext => `${fileName}${ext}`);
+
+    filesWithExtension.forEach((file) => {
+      expect(hasTypesExtension(file)).toBeTruthy();
+    });
+  });
+
+  test('hasTypesExtension returns false if given "index.cpp"', () => {
+    const file = 'index.cpp';
+    expect(hasTypesExtension(file)).toBeFalsy();
   });
 });
 
@@ -159,6 +225,42 @@ describe('isNotTest', () => {
   });
 });
 
+describe('isNotTypes', () => {
+  const { isNotTypes, getPath } = fsHelpers;
+
+  const pathToTypesFolder = getPath(__dirname)('folder.types');
+
+  beforeAll(() => {
+    try {
+      fs.rmdirSync(pathToTypesFolder);
+    } catch (fsError) { /* folder does not already exist */ }
+    fs.mkdirSync(pathToTypesFolder);
+  });
+
+  afterAll(() => {
+    fs.rmdirSync(pathToTypesFolder);
+  });
+
+  test('it returns true if given "fs.js"', () => {
+    const file = 'fs.js';
+    expect(isNotTypes(file)).toBeTruthy();
+  });
+
+  test('it returns true if given "types.js"', () => {
+    const file = 'types.js';
+    expect(isNotTypes(file)).toBeTruthy();
+  });
+
+  test('it returns false if given "index.types.js"', () => {
+    const file = 'index.types.js';
+    expect(isNotTypes(file)).toBeFalsy();
+  });
+
+  test('it returns false if given a folder "folder.types"', () => {
+    expect(isNotTypes(pathToTypesFolder)).toBeFalsy();
+  });
+});
+
 describe('isNotATestFile', () => {
   const {
     isNotATestFile,
@@ -183,13 +285,52 @@ describe('isNotATestFile', () => {
     expect(isNotATestFile(file)).toBeTruthy();
   });
 
-  test('isNotATestFile returns false if given path to "fs.test.js"', () => {
-    const file = getPath(__dirname)('fs.test.js');
+  test('isNotATestFile returns false if given path to "fs.spec.js"', () => {
+    const file = getPath(__dirname)('fs.spec.js');
     expect(isNotATestFile(file)).toBeFalsy();
   });
 
   test('isNotATestFile returns false for path to "folder.test"', () => {
     expect(isNotATestFile(pathToTestFolder)).toBeFalsy();
+  });
+});
+
+describe('isNotATypesFile', () => {
+  const {
+    isNotATypesFile,
+    getPath,
+  } = fsHelpers;
+
+  const pathToTypesFolder = getPath(__dirname)('folder.types');
+  const pathToTypesFile = getPath(__dirname)('fs.types.js');
+
+  beforeAll(() => {
+    try {
+      fs.rmdirSync(pathToTypesFolder);
+    } catch (fsError) { /* folder does not already exist */ }
+    fs.mkdirSync(pathToTypesFolder);
+
+    if (fs.existsSync(pathToTypesFile) === false) {
+      fs.writeFileSync(pathToTypesFile);
+    }
+  });
+
+  afterAll(() => {
+    fs.rmdirSync(pathToTypesFolder);
+    fs.unlinkSync(pathToTypesFile);
+  });
+
+  test('isNotATypesFile returns true if given path to "fs.js"', () => {
+    const file = getPath(__dirname)('fs.js');
+    expect(isNotATypesFile(file)).toBeTruthy();
+  });
+
+  test('isNotATypesFile returns false if given path to "fs.types.js"', () => {
+    expect(isNotATypesFile(pathToTypesFile)).toBeFalsy();
+  });
+
+  test('isNotATypesFile returns false for path to "folder.types"', () => {
+    expect(isNotATypesFile(pathToTypesFolder)).toBeFalsy();
   });
 });
 

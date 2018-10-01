@@ -1,4 +1,4 @@
-// @flow
+/* @flow */
 
 import { fromJS, type Iterable } from 'immutable';
 import { of } from 'rxjs';

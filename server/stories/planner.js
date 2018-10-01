@@ -1,5 +1,5 @@
 /* @flow */
-import alertModel from 'controllers/task';
+import TaskController, { type Task } from 'controllers/task';
 
 type GetTasksOptions = {
 };
@@ -8,10 +8,7 @@ export const getTasks = async (options: GetTasksOptions) => {
   const {
   } = options;
 
-  const tasks = await alertModel().findAll({});
+  const tasks = await TaskController.model().findAll({});
 
   return tasks;
 };
-
-export const createTask = task =>
-  alertModel().create(task);

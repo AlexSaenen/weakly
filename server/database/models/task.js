@@ -1,4 +1,4 @@
-const daysOfTheWeek = [
+export const daysOfTheWeek = [
   'Monday',
   'Tuesday',
   'Wednesday',

@@ -1,4 +1,4 @@
-// @flow
+/* @flow */
 
 import React, { Component, type Element } from 'react';
 import { findDOMNode } from 'react-dom';

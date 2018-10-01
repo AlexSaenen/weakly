@@ -1,4 +1,4 @@
-// @flow
+/* @flow */
 
 const DragItemTypes = {
   TASK: 'task',
