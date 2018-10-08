@@ -32,7 +32,7 @@ const initialState = fromJS({
 
 /* FIXME: move this to some kind of config */
 const getBackendUrl = () => {
-  if (process.env.NODE_ENV === 'production') return 'http://weaklyApi:3090';
+  if (process.env.NODE_ENV === 'production') return 'http://weakly-api:3090';
   return 'http://dev.l0cal:3003';
 };
 
