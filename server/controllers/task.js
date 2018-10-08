@@ -33,7 +33,6 @@ const createTask = (task: Task) => {
     throw new Error('Invalid task duration');
   }
 
-  console.log(db.models);
   return model().create(task);
 };
 

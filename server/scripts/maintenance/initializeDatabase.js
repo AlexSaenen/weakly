@@ -5,11 +5,11 @@ import db, {
   closeClient,
 } from 'db';
 
-import { insertTasks } from './initializeFixtures';
+import { initTasks } from './initializeFixtures';
 
 startClient(db)
   .then(() => db.sync({ force: true }))
-  .then(() => insertTasks())
+  // .then(() => initTasks())
   .catch((databaseError) => {
     console.error(databaseError);
     throw new Error('initializeDatabase failed to execute');
