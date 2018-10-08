@@ -32,7 +32,8 @@ const initialState = fromJS({
 
 /* FIXME: move this to some kind of config */
 const getBackendUrl = () => {
-  if (process.env.NODE_ENV === 'production') return 'http://weakly-api:3090';
+  /* FIXME: change domain name */
+  if (process.env.NODE_ENV === 'production') return 'http://pickaguide.fr:3090';
   return 'http://dev.l0cal:3003';
 };
 
