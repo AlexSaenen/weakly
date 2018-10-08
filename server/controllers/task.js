@@ -4,6 +4,7 @@ import db from 'db';
 import { createModelFetcher } from 'db/helpers';
 
 import { type Task } from './task.types';
+
 export * from './task.types';
 
 const model = createModelFetcher(db, 'Task');
@@ -32,6 +33,7 @@ const createTask = (task: Task) => {
     throw new Error('Invalid task duration');
   }
 
+  console.log(db.models);
   return model().create(task);
 };
 
