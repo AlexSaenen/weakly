@@ -9,7 +9,7 @@ import { initTasks } from './initializeFixtures';
 
 startClient(db)
   .then(() => db.sync({ force: true }))
-  // .then(() => initTasks())
+  .then(() => initTasks())
   .catch((databaseError) => {
     console.error(databaseError);
     throw new Error('initializeDatabase failed to execute');

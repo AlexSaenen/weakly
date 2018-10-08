@@ -30,6 +30,12 @@ const initialState = fromJS({
   result: [],
 });
 
+/* FIXME: move this to some kind of config */
+const getBackendUrl = () => {
+  if (process.env.NODE_ENV === 'production') return 'http://weaklyApi:3090';
+  return 'http://dev.l0cal:3003';
+};
+
 const tasksReducer = (state: State = initialState, action: Action): State => {
   switch (action.type) {
     case FETCH_OK: {
@@ -50,7 +56,7 @@ export const getTasks = (action$) =>
   action$.pipe(
     ofType(FETCH),
     mergeMap(action =>
-      ajax.getJSON('http://dev.l0cal:3003/v1/front/tasks').pipe(
+      ajax.getJSON(`${getBackendUrl()}/v1/front/tasks`).pipe(
         map(response => loadTasksOk(response)),
         catchError(error => of({
           type: FETCH_FAIL,
